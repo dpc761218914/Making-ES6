@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //{}：一个{}就是一个块级作用域
+    //块级作用域下var和function声明的变量依然是全局的
+    //块级作用域下let和const声明的变量是私有的，在外面是获取不到的
+    //{}如果想表示一个对象，不可以放在行首
+    {
+        var a = 0;
+        function getA() {
+            console.log("ok");
+        }
+        let b = 1;
+    }
+    console.log(a);//能够成功打印
+    getA();//成功执行
+    //console.log(b);//报错：b is not defined
+
+    //for循环，if判断，创建对象的时候都会产生{}
+    // {name:"Cyan",age:19}//这样写会报错，当做块级作用域
+    let obj = {name:"Cyan",age:19}
+</script>
+</body>
+</html>
