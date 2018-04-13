@@ -69,10 +69,55 @@
         return typeof item === "number";//判断遍历的每一项是不是数字
     }));//true
 
-    //reduce
-    //reduceRight
-    //keys
-    //entries
+    //reduce 迭代
+    //回调函数的两个参数： prev 上一次的返回值   item：当前项
+    //方法中可以填写第二个参数  作为初始的prev
+    //第二个参数的含义是：用来用来指定第一次在没有上一次返回值prev情况下 prev的值 也就说弥补了 第一次的prev
+    //此方法不改变原数组
+    /*
+    * prev     item     prev+item
+    * 没有      1         0+1=1
+    *  1        2        1+2=3
+    *  3        3        3+3=6
+    *  6        4        6+4=10
+    *  10       5        10+5=15
+    *  返回15
+    * */
+    let ary4 = [1,2,3,4,5];
+    console.log(ary4.reduce(function (prev, item) {
+        return prev + item;//将上一次的值加上当前项  相当于求和
+    }));
+    console.log(ary4.reduce(function (prev, item) {
+        return prev + item;
+    }, 10));//这一次的结果为25，因为第二个参数指定了第一次的prev为10
+
+    //reduceRight  跟reduce一样 只是顺序从右开始
+    console.log(ary4.reduceRight(function (prev, item) {
+        return prev + item;
+    }));//15
+
+    //keys 遍历每一项的索引的接口  可以使用for of遍历
+    let ary5 = ["a","b","c","d"];
+    console.log(ary5.keys());
+    for(let key of ary5.keys()){
+        //key 是索引
+        console.log(key);// 0 1 2 3
+    }
+    //默认使用for of遍历数组 默认遍历的就是每一项
+    for(let item of ary5){
+        console.log(item);// "a","b","c","d"
+    }
+
+    //entries  遍历接口 可以遍历索引和每一项
+    //每一次遍历得到一个数组 数组里面是[索引，当前项]
+    //一般可以通过数组解构赋值获取到遍历的结果 用[]包含内容 对应数组的格式
+    for(let e of ary5.entries()){
+        console.log(e);//[0,"a"] [1,"b"] [2,"c"] [3,"d"]
+    }
+    //如果要分别得到索引和每一项的话 就可以使用解构
+    for(let [index,item] of ary5.entries()) {
+        console.log(index,item);//0 "a" 1 "b" 2 "c" 3 "d"
+    }
 </script>
 </body>
 </html>
