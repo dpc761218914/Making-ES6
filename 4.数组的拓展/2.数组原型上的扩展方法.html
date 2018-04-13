@@ -26,6 +26,13 @@
     console.log(ary2.fill("Aqing", 3));//从索引3位置开始替换[1, 2, 3, "Aqing", "Aqing", "Aqing", "Aqing", "Aqing"]
     console.log(ary2.fill("Cyan", 3,5));//从索引3到索引4(不包含5)替换[1, 2, 3, "Cyan", "Cyan", "Aqing", "Aqing", "Aqing"]
 
+
+    //以下方法都采用了遍历
+    //遍历数组的方法 参数是一个函数，这个函数中的this是window 我们可以通过第二个参数改变函数中的this，写上它的指向 比如可以协商当前遍历的数组ary
+    //console.log打印this 会发现this是第二个参数
+    //但是reduce和reduceRight方法不可以修改this，因为他们的第二个参数是用来修改初始prev值的
+
+
     //filter 遍历数组 根据返回值去过滤原数组
     //返回的是一个新的数组 原数组不变
     let ary3 = ["Cyan",1,2,3,"Cyan"];
