@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    //对目标对象默认操作的拦截/改写
+    //new Proxy({目标对象target},{拦截的方法})
+    let obj = {name:"Cyan",age:"10"};
+    //让proxy1代理了obj, 需要通过proxy1 去操作代理的obj
+    let proxy1 = new Proxy(obj,{
+        get(){
+            console.log(1);
+            return "您好";//return什么 获取的就是什么
+
+        }
+    });
+    //get 只要有属性值获取操作 就会触发get方法
+    console.log(proxy1.name);//undefined  在这之前打印了一个1 说明获取操作成功调用方法 打印了1  但是被拦截 所以获取不到name的值
+
+</script>
 </body>
 </html>
