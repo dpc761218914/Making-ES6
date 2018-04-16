@@ -7,15 +7,15 @@
 <body>
 
 <script>
-    //对目标对象默认操作的拦截/改写
+    //对目标对象默认操作的拦截/改写 有时候我们也会称Proxy为代理器
     //new Proxy({目标对象target},{拦截的方法})
     let obj = {name:"Cyan",age:"19"};
     //让proxy1代理了obj, 需要通过proxy1 去操作代理的obj
     let proxy1 = new Proxy(obj,{
         get(target,key,proxy){//根据打印的arguments,发现：默认传入三个参数 target key proxy
             //target就是目标(原)对象
-            //key 属性名
-            //proxy 实例
+            //key是属性名
+            //proxy是new出的代理实例
             // console.log(arguments);
             console.log("get拦截");
             // return "您好";//return什么 获取的就是什么
