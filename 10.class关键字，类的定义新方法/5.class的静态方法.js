@@ -2,9 +2,9 @@
 //例如 Array.of
 class AA{
     constructor(){
-        this.a = "aa";
+        this.a = "aa";//私有的
     }
-    getA(){
+    getA(){//这是该类原型上的方法
         console.log("哈哈");
     }
     static  getB(){
